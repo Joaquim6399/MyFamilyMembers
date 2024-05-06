@@ -7,5 +7,10 @@
         public string Sex { get; set; }
         public int Age { get; set; }
 
+        public Person(string name, string relation)
+        {
+            Name = name;
+            Relation = relation;
+        }
     }
 }
