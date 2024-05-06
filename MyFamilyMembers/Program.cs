@@ -5,6 +5,7 @@ var app = builder.Build();
 
 var myself = new Person("Joaquim", "Myself") { Age = 26, Sex = "Male" };
 
+myself.FamilyMembers = new List<Person>();
 myself.FamilyMembers.Add( new Person("Josefa", "mum"));
 myself.FamilyMembers.Add( new Person("Raja", "girlfriend"));
 
@@ -16,8 +17,9 @@ var familyMembers = new List<Person>
 };
 
 app.MapGet("/", () => "Hello World!");
-app.MapGet("/joaquim", () => new Person("Joaquim", "Me") { Age = 26, Sex = "Male"});
-app.MapGet("/joaquim/mum", () => familyMembers.Where(u => u.Relation == "Mum"));
+app.MapGet("/joaquim", () => myself);
+app.MapGet("/joaquim/mum", () => myself.FamilyMembers.Where(u => u.Relation == "mum"));
+app.MapGet("/joaquim/girlfriend", () => myself.FamilyMembers.Where(u => u.Relation == "girlfriend"));
 
 
 app.Run();
