@@ -4,8 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
-
-app.MapGet("/me", () => new Person { Name = "Joaquim", Age = 26, Relation = "Me", Sex = "Male"});
+app.MapGet("/joaquim", () => new Person("Joaquim", "Me") { Age = 26, Sex = "Male"});
 
 
 app.Run();
