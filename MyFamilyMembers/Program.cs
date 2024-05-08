@@ -4,6 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "This is a API where you can see my family and friends");
+
+//Vertex List
+List<Person> people = new List<Person>();
+people.Add(new Person("Joaquim") {Age = 26, Sex = "Male"});
+
 
 app.Run();
