@@ -29,7 +29,7 @@ void addConnection(string name1, string name2, string relationship) {
 
 addConnection("joaquim", "raja", "wife");
 addConnection("joaquim", "josefa", "mum");
-addConnection("Raja", "joaquim", "husband");
+addConnection("raja", "joaquim", "husband");
 
 List<Person> findAllConnection(string name) {
     List<Person> result = new List<Person>();
@@ -49,6 +49,26 @@ List<Person> findAllConnection(string name) {
     return result;
 }
 
+//Instead of return a person class it return a connection with the relationship string
+List<Connection> getAllConnection(string name) {
+    List<Connection> result = new List<Connection>();
+
+    //Find index of named user to search in matrix
+    int index = people.FindIndex(a => a.Name == name);
+
+    /*
+        Loop through one matrix line to search for non null values,
+        which mean theres a connection
+    */
+    for(int i = 0; i < count; i++) {
+        if(connections[index, i] != null) {
+            //Create a connection obj with a person and a string relationship 
+            result.Add( new Connection { Relative = people[i], Relationship = connections[index,i]});
+        }
+    }
+    return result;
+}
+
 app.MapGet("/", () => "This is a API where you can see my family and friends");
-app.MapGet("/joaquim", () => findAllConnection("joaquim"));
+app.MapGet("/joaquim", () => getAllConnection("raja"));
 app.Run();
