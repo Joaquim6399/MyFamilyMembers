@@ -70,5 +70,5 @@ List<Connection> getAllConnection(string name) {
 }
 
 app.MapGet("/", () => "This is a API where you can see my family and friends");
-app.MapGet("/joaquim", () => getAllConnection("raja"));
+app.MapGet("/{name}", (string name) => getAllConnection(name));
 app.Run();
