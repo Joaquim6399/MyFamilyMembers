@@ -11,6 +11,7 @@ List<Person> people = new List<Person>();
 people.Add(new Person("Joaquim") {Age = 26, Sex = "Male"});
 people.Add(new Person("Raja") {Age = 25, Sex = "Female"});
 people.Add(new Person("Josefa") {Age = 55, Sex = "Female"});
+people.Add(new Person("Bruno") {Age = 26, Sex = "Male"});
 
 //Adjacency Matrix
 int count = people.Count;
@@ -30,6 +31,13 @@ void addConnection(string name1, string name2, string relationship) {
 addConnection("joaquim", "raja", "wife");
 addConnection("joaquim", "josefa", "mum");
 addConnection("raja", "joaquim", "husband");
+addConnection("raja", "josefa", "mother in law");
+addConnection("josefa", "raja", "daughter in law");
+addConnection("josefa", "bruno", "nephew");
+addConnection("josefa", "joaquim", "son");
+addConnection("joaquim", "bruno", "cousin");
+addConnection("bruno", "joaquim", "cousin");
+addConnection("bruno", "josefa", "aunty");
 
 List<Person> findAllConnection(string name) {
     List<Person> result = new List<Person>();
